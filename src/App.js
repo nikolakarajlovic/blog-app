@@ -2,6 +2,7 @@ import './styles/App.css';
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import AppPosts from './pages/AppPosts';
+import SinglePost from './components/SinglePost';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
           <Route path="/posts">
             <AppPosts />
           </Route>
+          
+          <Route exact path='/edit/:id'>
+            <SinglePost />
+            </Route>
         </Switch>
       </div>
     </Router>

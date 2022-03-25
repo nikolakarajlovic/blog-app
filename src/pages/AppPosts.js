@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import SinglePost from '../components/SinglePost';
+import PostService from '../services/PostService';
+import {Link} from 'react-router-dom'
 
 function AppPosts() {
 
@@ -7,16 +10,17 @@ function AppPosts() {
     return (
       <div>
         <h2>Posts:</h2>
-
-        
-
         <ul>
-        {posts.map((post) =>
-        <li style={{ border: '1px solid black', marginBottom: '5px', padding: 5, display: 'flex', flexDirection: 'column'}} key={post.id}>
-          <span>Title: {post.title}</span>
-          <span>Text: {post.text}</span>
-        </li>)}
-        </ul>
+        {posts.map((post) => (
+          <SinglePost
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            text={post.text}
+            viewpost={<Link to={`/post/${post.id}`}>View Post</Link>}
+          />
+        ))}
+      </ul>
 
       </div>
     );
